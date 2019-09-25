@@ -1,26 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Dealership;
 
-class Car {
-    public string MakeModel;
-    public int Price;
-    public int Miles;
-    public string Message;
-    
-    public Car(string makeModel, int price, int miles, string message)
-    {
-        MakeModel = makeModel;
-        Price = price;
-        Miles = miles;
-        Message = message;
-    }
-    public bool WorthBuying(int maxPrice, int maxMile)
-    {
-    
-        return (Price < maxPrice && Miles < maxMile);
-    }
-}
-
+namespace Dealership
+{
 public class Program
 {
     public static void Main()
@@ -33,7 +16,10 @@ public class Program
 
         Car aztec = new Car("2001 Pontiac Aztec", 30000, 100000, "Blabber");
 
+
         List<Car> Cars = new List<Car>() {geo, bmw, subaru, aztec};
+
+        bmw.SetPrice(8);
 
         Console.WriteLine("How much you trying to spend?");
         string maxPriceString = Console.ReadLine();
@@ -55,9 +41,14 @@ public class Program
                 Console.WriteLine("Fuck off!");
             }
         }
-        foreach (Car automobile in Cars)
+        foreach (Car automobile in CarsMatchingSearch)
         {
-        Console.WriteLine(automobile.MakeModel);
+         Console.WriteLine("----------------------");
+        Console.WriteLine(automobile.GetMakeModel());
+        Console.WriteLine(automobile.GetMiles() + " miles");
+        Console.WriteLine("$" + automobile.GetPrice());
         }
+        
     }
+}
 }
